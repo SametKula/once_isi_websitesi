@@ -25,8 +25,9 @@ $(document).ready(function() {
         img.loading = "lazy";
         img.fetchpriority = "high";
         img.decoding = "async";
-        img.style.width = '100vw';
-        img.style.height = '100vh';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = "cover"
         slide.appendChild(img);
         slider.appendChild(slide);
     });
