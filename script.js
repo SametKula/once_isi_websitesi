@@ -2,19 +2,19 @@ $(document).ready(function() {
     // Create slider images
     const slider = document.querySelector('.slider');
     const images = [
-        'images/2.jpeg',
-        'images/3.jpeg',
-        'images/4.jpeg',
-        'images/5.jpeg',
-        'images/6.jpeg',
-        'images/7.jpeg',
-        'images/8.jpeg',
-        'images/9.jpeg',
-        'images/10.jpeg',
-        'images/11.jpeg',
-        'images/12.jpeg',
-        'images/13.jpeg',
-        'images/15.jpeg',
+        'images/2.webp',
+        'images/3.webp',
+        'images/4.webp',
+        'images/5.webp',
+        'images/6.webp',
+        'images/7.webp',
+        'images/8.webp',
+        'images/9.webp',
+        'images/10.webp',
+        'images/11.webp',
+        'images/12.webp',
+        'images/13.webp',
+        'images/15.webp',
     ];
     images.forEach((image) => {
         const slide = document.createElement('div');
@@ -22,6 +22,11 @@ $(document).ready(function() {
         const img = document.createElement('img');
         img.src = image;
         img.alt = image;
+        img.loading = "lazy";
+        img.fetchpriority = "high";
+        img.decoding = "async";
+        img.style.width = '100vw';
+        img.style.height = '100vh';
         slide.appendChild(img);
         slider.appendChild(slide);
     });
@@ -80,15 +85,24 @@ $(document).ready(function() {
             let mainItem;
             if (isVideo) {
                 mainItem = $('<video>', {
-                    src: thumb.attr('src'),
-                    controls: true,
+                    class: 'thumb mx-auto d-block',
+                    loading: 'lazy',
+                    preload: 'none',
+                    height: '100%',
+                    muted: true,
                     autoplay: true,
                     loop: true,
-                }).prop('muted', true);
+                    playsInline: true,
+                }).html(`<source src="${thumb.attr('src')}" type="video/webm">`).on('play', function() {
+                    this.muted = true;
+                });
             } else {
                 mainItem = $('<img>', {
                     src: thumb.attr('src'),
-                    alt: thumb.attr('alt')
+                    alt: thumb.attr('alt'),
+                    loading: 'eager',
+                    fetchpriority: 'high',
+                    decoding: 'async'
                 });
             }
             

@@ -4,13 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarsus Su Tesisatçısı | 7/24 Acil Tesisat Hizmeti - Önce Tesisat</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/logo_image.png" type="image/png" sizes="16x16">
+    <!-- Kritik CSS'i inline olarak ekleyin -->
+    <style>
+        
+        :root {
+            --primary-blue: #0047AB;/* rgb(0, 123, 255)*/
+            --navy: rgb(0, 137, 217);
+            --green: #28a745;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(0,71, 171, 0.795);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            object-fit: contain;
+        }
+        
+        .logo-text-nav {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .logo-text {
+            position: absolute;
+            top: 26vh;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5vh;
+            font-family: 'Tahoma', cursive;
+            color: var(--white);
+            text-align: center;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 4px 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            display: block;
+            height: 8vh;
+            line-height: 8vh;
+        }
+        
+        .logo-text span {
+            background: #ff3b3b;
+            padding: 0 10px;
+            display: inline-block;
+            margin: 4px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--green);
+        }
+        
+        /* Slider Section */
+        .slider-section {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .slider {
+            height: 100%;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide img {
+            object-fit: contain;
+            filter: blur(1px);
+        }
+        
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links li {
+                width: 35px;
+                font-size: 0;
+            }
+            .nav-links i {
+                font-size: 25px;
+            }
+
+            .slider-section {
+                height: 600px;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .fixed-call-button {
+                bottom: 20px;
+                right: 20px;
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .fixed-call-button i {
+                font-size: 24px;
+            }
+            
+            .fixed-call-button span {
+                font-size: 1.1rem;
+            }
+        }
+        
+    </style>
+    <!-- Font Awesome'ı optimize edilmiş şekilde yükleyin -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Ana CSS'i defer edin -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="icon" href="images/logo_image.webp" type="image/png" sizes="16x16">
     <meta name="google-site-verification" content="g3MIzvZacVPGDQCsA63azDmmxZBJk6OCKiFFduhSg48" />
     <meta name="description" content="Tarsus'ta profesyonel tesisat, tıkanıklık açma, su tesisatı, güneş enerjisi sistemleri kurulum ve tamir hizmetleri. 7/24 acil tesisatçı hizmeti.">
     <meta name="keywords" content="tesisatçı, tıkanıklık açma, gider açma, su tesisatçısı, güneş enerjisi, kalorifer tesisatı, Tarsus tesisatçı, acil tesisatçı, su tamiri, tuvalet tıkanıklığı, lavabo tıkanıklığı, güneş enerjisi kurulum, tıkanık açma, tıkanık, tarsus, mersin, bilal usta, tıkanık açma tesisatçısı">
-    <link rel="canonical" href="https://www.oncetesisat.com/" />
+    <link rel="canonical" href="https://tarsus-tesisat.site/" />
 
 </head>
 <body>
@@ -23,7 +201,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="images/logo_image.png" alt="Önce Tesisat Logo" class="logo-img">
+                <img src="images/logo_image.webp" alt="Önce Tesisat Logo" class="logo-img" height="50px" width="50px">
                 <span class="logo-text-nav">Önce Tesisat</span>
             </div>
             <ul class="nav-links">
@@ -40,7 +218,12 @@
     <section id="anasayfa" class="slider-section">
         <div class="slider">
             <div class="slide active">
-                <img src="images/1.jpeg" alt="Slider 1">
+                <img src="images/1.webp" 
+                     alt="Slider 1" 
+                     loading="eager" 
+                     fetchpriority="high"
+                     decoding="async"
+                     style="width: 100vw; height: 100vh; object-fit: cover;">
             </div>
 
         </div>
@@ -50,7 +233,7 @@
     <!-- Hizmetler Section -->
     <section id="hizmetler" class="services-section">
         <div class="container">
-            <h2>Hizmetlerimiz</h2>
+            <h1>Hizmetlerimiz</h1>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-faucet"></i>
@@ -103,29 +286,29 @@
             <h2>Galeri</h2>
             <div class="gallery-container">
                 <div class="gallery-main">
-                    <img src="images/1.jpeg" alt="Galeri 1">
+                    <img src="images/1.webp" alt="Galeri 1">
                 </div>
                 <div class="gallery-thumbs">
-                    <img src="images/1.jpeg" alt="Galeri 1" class="thumb active">
-                    <img src="images/2.jpeg" alt="Galeri 2" class="thumb">
-                    <img src="images/3.jpeg" alt="Galeri 3" class="thumb">
-                    <img src="images/4.jpeg" alt="Galeri 4" class="thumb">
-                    <img src="images/5.jpeg" alt="Galeri 5" class="thumb">
-                    <img src="images/6.jpeg" alt="Galeri 6" class="thumb">
-                    <img src="images/7.jpeg" alt="Galeri 7" class="thumb">
-                    <img src="images/8.jpeg" alt="Galeri 8" class="thumb">
-                    <img src="images/9.jpeg" alt="Galeri 9" class="thumb">
-                    <img src="images/10.jpeg" alt="Galeri 10" class="thumb">
-                    <img src="images/11.jpeg" alt="Galeri 11" class="thumb">
-                    <img src="images/12.jpeg" alt="Galeri 12" class="thumb">
-                    <img src="images/13.jpeg" alt="Galeri 13" class="thumb">
-                    <img src="images/14.jpeg" alt="Galeri 14" class="thumb">
-                    <img src="images/15.jpeg" alt="Galeri 15" class="thumb">
+                    <img src="images/1.webp" alt="Galeri 1" class="thumb active">
+                    <img src="images/2.webp" alt="Galeri 2" class="thumb">
+                    <img src="images/3.webp" alt="Galeri 3" class="thumb">
+                    <img src="images/4.webp" alt="Galeri 4" class="thumb">
+                    <img src="images/5.webp" alt="Galeri 5" class="thumb">
+                    <img src="images/6.webp" alt="Galeri 6" class="thumb">
+                    <img src="images/7.webp" alt="Galeri 7" class="thumb">
+                    <img src="images/8.webp" alt="Galeri 8" class="thumb">
+                    <img src="images/9.webp" alt="Galeri 9" class="thumb">
+                    <img src="images/10.webp" alt="Galeri 10" class="thumb">
+                    <img src="images/11.webp" alt="Galeri 11" class="thumb">
+                    <img src="images/12.webp" alt="Galeri 12" class="thumb">
+                    <img src="images/13.webp" alt="Galeri 13" class="thumb">
+                    <img src="images/14.webp" alt="Galeri 14" class="thumb">
+                    <img src="images/15.webp" alt="Galeri 15" class="thumb">
 
 
-                    <video src="images/video1.mp4" alt="Galeri video 1" class="thumb" muted autoplay loop></video>
-                    <video src="images/video3.mp4" alt="Galeri video 3" class="thumb" muted autoplay loop></video>
-                    <video src="images/video4.mp4" alt="Galeri video 4" class="thumb" muted autoplay loop></video>
+                    <video src="images/video1.webm" alt="Galeri video 1" class="thumb" muted loop></video>
+                    <video src="images/video3.webm" alt="Galeri video 3" class="thumb" muted loop></video>
+                    <video src="images/video4.webm" alt="Galeri video 4" class="thumb" muted loop></video>
                 </div>
             </div>
         </div>
